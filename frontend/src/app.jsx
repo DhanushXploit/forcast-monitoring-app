@@ -82,8 +82,9 @@ export default function App() {
         setLoading(true)
         setError(null)
         try {
+            const API_BASE = import.meta.env.VITE_API_URL || 'https://forcast-monitoring-app.onrender.com'
             const res = await fetch(
-                `/api/chart-data?start_date=${startDate}&end_date=${endDate}&horizon_h=${horizon}`
+                `${API_BASE}/api/chart-data?start_date=${startDate}&end_date=${endDate}&horizon_h=${horizon}`
             )
             if (!res.ok) {
                 const err = await res.json()
